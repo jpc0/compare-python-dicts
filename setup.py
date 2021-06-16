@@ -1,5 +1,5 @@
 from setuptools import setup
-setup(name='compare-python-dicts',
+setup(name='compare_dicts',
 version='0.1',
 description='Library for comparing python dictionarys',
 url='#',
