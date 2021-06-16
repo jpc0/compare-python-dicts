@@ -23,21 +23,24 @@ class DictCompare:
     @staticmethod
     def list_in_list(list1, list2):
         for i in list1:
-            if type(i) == dict:
-                return DictCompare.dict_in_dict(i, list2[list2.index(i)])
-            elif type(i) == list:
-                return DictCompare.list_in_list(i, list2[list2.index(i)])
             for j in list2:
                 if type(i) == type(j):
                     return True
                 else:
                     return False
+            if type(i) == dict:
+                return DictCompare.dict_in_dict(i, list2[0])
+            elif type(i) == list:
+                if i in list[2]:
+                    return DictCompare.list_in_list(i, list2[list2.index(i)])
+                else:
+                    pass
         return True
 
 if __name__ == "__main__":
     a = {"a": "", "b":[{"a":""}]}
     b = {"a": ""}
-    c = {"b": [{"a":""}]}
+    c = {"b": [{}]}
     d = {"b": []}
     e = {}
     assert DictCompare.dict_in_dict(b, a)
