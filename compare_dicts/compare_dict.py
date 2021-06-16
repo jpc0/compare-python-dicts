@@ -13,9 +13,9 @@ class DictCompare:
                 else:
                     return False
                 if type(dict1[i]) == dict:
-                    DictCompare.dict_in_dict(dict1[i], dict2[i])
+                    return DictCompare.dict_in_dict(dict1[i], dict2[i])
                 elif type(dict1[i]) == list:
-                    DictCompare.list_in_list(dict1[i], dict2[i])
+                    return DictCompare.list_in_list(dict1[i], dict2[i])
             else:
                 return False
         return True
