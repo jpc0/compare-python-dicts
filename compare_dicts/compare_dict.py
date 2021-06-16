@@ -25,25 +25,35 @@ class DictCompare:
         for i in list1:
             for j in list2:
                 if type(i) == type(j):
-                    return True
+                    pass
                 else:
                     return False
             if type(i) == dict:
-                return DictCompare.dict_in_dict(i, list2[0])
+                for k in list2:
+                    if DictCompare.dict_in_dict(i, k):
+                        break
+                else:
+                    return False
             elif type(i) == list:
                 if i in list[2]:
-                    return DictCompare.list_in_list(i, list2[list2.index(i)])
+                    for l in list2:
+                        if DictCompare.list_in_list(i, l):
+                            break
+                    else:
+                        return False
                 else:
                     pass
         return True
 
 if __name__ == "__main__":
-    a = {"a": "", "b":[{"a":""}]}
+    a = {"a": "", "b":[{"a":""}, {"b":""}]}
     b = {"a": ""}
     c = {"b": [{}]}
     d = {"b": []}
     e = {}
+    f = {"b": [{"a":""}, {"b":""}]}
     assert DictCompare.dict_in_dict(b, a)
     assert DictCompare.dict_in_dict(c, a)
     assert DictCompare.dict_in_dict(d, a)
     assert DictCompare.dict_in_dict(e, a)
+    assert DictCompare.dict_in_dict(f, a)
